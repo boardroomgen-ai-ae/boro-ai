@@ -27,7 +27,7 @@ This code applies in all project spaces (issues, pull requests, discussions) and
 
 ## Enforcement
 
-Report unacceptable behaviour to **conduct@boardroom-ai.ae**. All reports are reviewed promptly and kept confidential. Maintainers may remove, edit or reject comments, commits, issues and other contributions that break this code, and may temporarily or permanently ban a contributor whose behaviour is inappropriate, threatening, offensive or harmful.
+Report unacceptable behaviour privately to the maintainers through the contact form at https://boardroom-ai.ae, or use GitHub's **Report content** on the comment or issue. All reports are reviewed promptly and kept confidential. Maintainers may remove, edit or reject comments, commits, issues and other contributions that break this code, and may temporarily or permanently ban a contributor whose behaviour is inappropriate, threatening, offensive or harmful.
 
 ## Attribution
 

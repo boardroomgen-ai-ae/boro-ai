@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: Start a free workspace
     url: https://control.boardroom-ai.ae/register?utm_source=github&utm_medium=issues&utm_campaign=contact
-    about: Product questions and account help are answered inside the cabinet. Security reports go privately to the address in SECURITY.md, never in a public issue.
+    about: Product questions and account help are answered inside the cabinet. Security reports go privately through the Security tab (Report a vulnerability), never in a public issue.

@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please report security issues **privately** to **security@boardroom-ai.ae**.
+Please report security issues **privately** through GitHub: open the **Security** tab of this repository and press **Report a vulnerability** (private vulnerability reporting). Only the maintainers see the report.
 
 Do **not** open a public GitHub issue, discussion or pull request for a vulnerability.
 
