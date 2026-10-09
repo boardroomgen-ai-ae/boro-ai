@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "boardroom": {
+      "url": "https://control.boardroom-ai.ae/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_MCP_TOKEN"
+      }
+    }
+  }
+}

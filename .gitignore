@@ -1,0 +1,18 @@
+# Never commit credentials or local client configs
+.env
+.env.*
+*.pem
+*.key
+.mcp.json
+.cursor/
+claude_desktop_config.local.json
+
+# Private denylist for scripts/check-no-secrets.mjs (plain-text terms, stays on your machine)
+.secrets-denylist.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/

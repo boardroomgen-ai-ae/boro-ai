@@ -1,0 +1,49 @@
+{
+  "name": "Revenue Control: form to lead",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": { "hook": null, "maxResults": 1 },
+      "mapper": {},
+      "metadata": { "designer": { "x": 0, "y": 0 } }
+    },
+    {
+      "id": 2,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": { "handleErrors": true, "useNewZLibDeCompress": true },
+      "mapper": {
+        "url": "https://control.boardroom-ai.ae/api/v1/leads",
+        "method": "post",
+        "headers": [
+          { "name": "Authorization", "value": "Bearer YOUR_API_KEY" }
+        ],
+        "qs": [],
+        "bodyType": "raw",
+        "parseResponse": true,
+        "contentType": "application/json",
+        "inputMethod": "jsonString",
+        "data": "{\"name\": \"{{1.name}}\", \"phone\": \"{{1.phone}}\", \"email\": \"{{1.email}}\", \"title\": \"Website form\", \"source_campaign\": \"{{1.utm_campaign}}\", \"external_id\": \"{{1.form_id}}\", \"note\": \"{{1.message}}\"}"
+      },
+      "metadata": { "designer": { "x": 300, "y": 0 } }
+    },
+    {
+      "id": 3,
+      "module": "gateway:WebhookRespond",
+      "version": 1,
+      "parameters": {},
+      "mapper": {
+        "status": "200",
+        "body": "{\"ok\": true, \"lead_id\": \"{{2.data.id}}\"}",
+        "headers": [{ "key": "Content-Type", "value": "application/json" }]
+      },
+      "metadata": { "designer": { "x": 600, "y": 0 } }
+    }
+  ],
+  "metadata": {
+    "version": 1,
+    "scenario": { "roundtrips": 1, "maxErrors": 3, "autoCommit": true, "sequential": false, "confidential": true, "dataloss": false, "dlq": false }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "name": "Revenue Control: morning list of open tasks",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 8 * * *" }] }
+      },
+      "id": "22222222-0000-4000-8000-000000000001",
+      "name": "Every day at 08:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "url": "https://control.boardroom-ai.ae/api/v1/tasks",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": { "parameters": [{ "name": "status", "value": "open" }, { "name": "limit", "value": "200" }] },
+        "options": {}
+      },
+      "id": "22222222-0000-4000-8000-000000000002",
+      "name": "Read open tasks",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [260, 0],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Revenue Control API key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nconst lines = (r.data || []).slice(0, 20).map((t, i) => `${i + 1}. ${t.title || 'Task'}${t.due_at ? ' (due ' + t.due_at.slice(0, 10) + ')' : ''}`);\nreturn [{ json: { text: `Open tasks: ${r.total}\n` + lines.join('\n') } }];"
+      },
+      "id": "22222222-0000-4000-8000-000000000003",
+      "name": "Build summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [520, 0]
+    }
+  ],
+  "connections": {
+    "Every day at 08:00": { "main": [[{ "node": "Read open tasks", "type": "main", "index": 0 }]] },
+    "Read open tasks": { "main": [[{ "node": "Build summary", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1", "timezone": "Asia/Dubai" },
+  "active": false,
+  "pinData": {}
+}

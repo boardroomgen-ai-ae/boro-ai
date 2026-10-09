@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "boardroom": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://control.boardroom-ai.ae/mcp",
+        "--header",
+        "Authorization:${BOARDROOM_AUTH}"
+      ],
+      "env": {
+        "BOARDROOM_AUTH": "Bearer YOUR_MCP_TOKEN"
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+name: Feature request
+description: Suggest a new MCP tool, API endpoint, Boro capability or doc.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What are you trying to get done, and what stops you today?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help
+      description: e.g. "an MCP tool that lists deals closing this week", or "a webhook when a lead changes stage".
+    validations:
+      required: true
+  - type: dropdown
+    id: who
+    attributes:
+      label: You are
+      options:
+        - Business owner / manager using Revenue Control
+        - Developer / integrator
+        - Partner / agency
+        - Just exploring
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else
+      description: Industry, country, the tools you already use. No customer data, please.
