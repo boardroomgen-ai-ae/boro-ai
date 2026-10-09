@@ -190,7 +190,8 @@ for (const full of files) {
       .replace(/io\.github\.boardroomgen-ai-ae\/boro-ai\b/gi, "")
       // the same public address as catalog badges write it
       .replace(/io\.github\.boardroomgen--ai--ae%2Fboro--ai/gi, "")
-      .replace(/github\/stars\/boardroomgen-ai-ae\/boro-ai\b/gi, "");
+      .replace(/github\/stars\/boardroomgen-ai-ae\/boro-ai\b/gi, "")
+      .replace(/smithery\.ai\/servers\/boardroom-gen\/revenue-control\b/gi, "");
     for (const hit of privateTermHits(publicSafe)) add(rel, n, "private name or id (hashed list)", redact(hit));
     const low = ln.toLowerCase();
     for (const term of extra) if (low.includes(term)) add(rel, n, "private term (.secrets-denylist.local)", redact(term));
