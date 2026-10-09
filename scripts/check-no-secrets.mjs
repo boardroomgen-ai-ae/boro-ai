@@ -185,7 +185,12 @@ for (const full of files) {
     for (const m of ln.matchAll(UUID)) if (!fakeUuid(m[0])) add(rel, n, "internal: real-looking UUID", redact(m[0]));
     // This repository's own public address and its MCP Registry name are public by
     // definition; they are removed before the private-name check, nothing else is.
-    const publicSafe = ln.replace(/github\.com\/boardroomgen-ai-ae\/boro-ai\b/gi, "").replace(/io\.github\.boardroomgen-ai-ae\/boro-ai\b/gi, "");
+    const publicSafe = ln
+      .replace(/github\.com\/boardroomgen-ai-ae\/boro-ai\b/gi, "")
+      .replace(/io\.github\.boardroomgen-ai-ae\/boro-ai\b/gi, "")
+      // the same public address as catalog badges write it
+      .replace(/io\.github\.boardroomgen--ai--ae%2Fboro--ai/gi, "")
+      .replace(/github\/stars\/boardroomgen-ai-ae\/boro-ai\b/gi, "");
     for (const hit of privateTermHits(publicSafe)) add(rel, n, "private name or id (hashed list)", redact(hit));
     const low = ln.toLowerCase();
     for (const term of extra) if (low.includes(term)) add(rel, n, "private term (.secrets-denylist.local)", redact(term));

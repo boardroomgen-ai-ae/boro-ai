@@ -10,6 +10,10 @@ Boro не просто отвечает на вопросы. Boro делает �
 [![MCP: 13 инструментов чтения](https://img.shields.io/badge/MCP-13_read_tools-6f42c1.svg)](docs/mcp/README.md)
 [![REST API: v1](https://img.shields.io/badge/REST_API-v1-0a7d5a.svg)](docs/api/rest-v1.md)
 [![Built in Dubai](https://img.shields.io/badge/Built_in-Dubai_🇦🇪-black.svg)](https://control.boardroom-ai.ae/?utm_source=github&utm_medium=readme_ru&utm_campaign=badge)
+[![Official MCP Registry](https://img.shields.io/badge/MCP_Registry-io.github.boardroomgen--ai--ae%2Fboro--ai-1f6feb.svg)](https://registry.modelcontextprotocol.io/v0/servers?search=boro-ai)
+[![Smithery](https://img.shields.io/badge/Smithery-listed-ff5601.svg)](https://smithery.ai/servers/boardroom-gen/revenue-control)
+[![Glama](https://img.shields.io/badge/Glama-ownership_verified-2ea44f.svg)](https://glama.ai/mcp/connectors/io.github.boardroomgen-ai-ae/boro-ai)
+[![GitHub stars](https://img.shields.io/github/stars/boardroomgen-ai-ae/boro-ai?style=social)](https://github.com/boardroomgen-ai-ae/boro-ai/stargazers)
 
 [**Создать пространство бесплатно**](https://control.boardroom-ai.ae/register?utm_source=github&utm_medium=readme_ru&utm_campaign=cta) ·
 [**Сайт**](https://control.boardroom-ai.ae/?utm_source=github&utm_medium=readme_ru&utm_campaign=site) ·
