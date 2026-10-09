@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.boardroomgen-ai-ae/boro-ai",
+  "title": "Boardroom Revenue Control",
+  "description": "Read-only sales CRM for AI clients: leads, pipeline, AI-agent chats, calls, ad attribution.",
+  "repository": { "url": "https://github.com/boardroomgen-ai-ae/boro-ai", "source": "github" },
+  "websiteUrl": "https://boardroom-ai.ae",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://control.boardroom-ai.ae/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <token>. The workspace owner issues and revokes it in Integrations > API and MCP.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
