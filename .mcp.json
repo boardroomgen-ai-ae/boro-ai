@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "boardroom": {
+      "type": "http",
+      "url": "https://control.boardroom-ai.ae/mcp",
+      "headers": {
+        "Authorization": "Bearer ${BOARDROOM_MCP_TOKEN}"
+      }
+    }
+  }
+}
