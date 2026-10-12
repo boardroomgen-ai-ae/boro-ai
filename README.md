@@ -67,7 +67,7 @@ Setup guides: [Claude Code](docs/mcp/setup/claude-code.md) · [Claude Desktop](d
 **Safe by design:**
 - **Read-only.** The public MCP server has no write tools.
 - **One workspace per token.** The workspace comes from the token. A tool argument can never point at another tenant.
-- **Masked by default.** Lists mask phone numbers and e-mails. Full contact details come back only when you ask for one specific record.
+- **Masked by default.** Lists and lead cards mask phone numbers and e-mails. Full contact details come back only for one specific record, and only if the owner granted the token that permission separately.
 - **Audited.** Every read is logged with the tool, the row counts and the record id. Response bodies and personal data are not stored in the log.
 - **Owner-issued and revocable.** Only the workspace owner can mint a token or approve an OAuth sign-in. Tokens expire, and you can revoke one at any time from the same card.
 

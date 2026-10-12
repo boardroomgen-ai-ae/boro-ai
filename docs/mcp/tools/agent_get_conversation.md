@@ -48,3 +48,4 @@ The workspace is never an input. It always comes from the token.
 ## Notes
 
 - The transcript is chosen by conversation id, never by a masked phone number. Every call is written to the audit log with the conversation id.
+- The customer's contact details are masked. The message text is returned as written, because it is the conversation.

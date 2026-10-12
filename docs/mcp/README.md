@@ -19,7 +19,7 @@ Only the **workspace owner** can issue a token.
 3. Give the token a label, for example `claude-laptop`, and press **Get an MCP token**.
 4. Copy the token **now**. It is shown once. Only a hash is stored, so nobody can show it to you again, including us.
 
-Tokens expire after 90 days by default. To revoke one, use the same card. A revoked token stops working on its next call.
+Tokens expire after 90 days by default (tokens issued through OAuth sign-in, after 30 days). To revoke one, use the same card. A revoked token stops working on its next call.
 
 > Treat the token like a password. Never commit it, never paste it into a public chat, and use one token per device or tool so you can revoke them one at a time.
 
@@ -48,7 +48,7 @@ Ask your client to call `whoami` first. It returns the workspace the token belon
 |---|---|---|
 | [`whoami`](tools/whoami.md) | Which workspace, which scopes, which tools work | none |
 | [`crm_list_leads`](tools/crm_list_leads.md) | Leads, newest activity first, contacts masked | `crm:read` |
-| [`crm_get_lead`](tools/crm_get_lead.md) | One lead in full: contact, notes, events, stage history, open tasks | `crm:read` |
+| [`crm_get_lead`](tools/crm_get_lead.md) | One lead: notes, events, stage history, open tasks; full contact only with `crm:read_pii` | `crm:read` |
 | [`crm_pipeline_overview`](tools/crm_pipeline_overview.md) | Every pipeline and stage with count and value | `crm:read` |
 | [`crm_leads_without_task`](tools/crm_leads_without_task.md) | Open leads nobody is following up | `crm:read` |
 | [`dashboard_snapshot`](tools/dashboard_snapshot.md) | The workspace's KPIs as the dashboard shows them | `crm:read` |
@@ -60,13 +60,13 @@ Ask your client to call `whoami` first. It returns the workspace the token belon
 | [`marketing_snapshot`](tools/marketing_snapshot.md) | Spend, reach, clicks, cost per lead by campaign | `marketing:read` |
 | [`partner_overview`](tools/partner_overview.md) | A partner's own referral cabinet (partner tokens only) | `partner:read` |
 
-A new token carries `crm:read`, `agent:read` and `marketing:read` by default.
+A new token carries `crm:read`, `agent:read` and `marketing:read` by default. `crm:read_pii`, which unmasks contact details in `crm_get_lead`, is never implicit: the workspace owner grants it separately.
 
 ## Security model
 
 - **The workspace comes from the token.** No tool takes a workspace argument. If a request tries to name one, it is refused with `cross_workspace_denied`, and the attempt is written to your audit log.
 - **Read-only.** The public server publishes no write tools, so a client cannot discover any, try any or claim to have used any.
-- **Masked by default.** List tools mask phone numbers and e-mails. Only the single-record tools (`crm_get_lead`, `agent_get_conversation`) return full details, and only for a record in your own workspace.
+- **Masked by default.** List tools mask phone numbers and e-mails. `crm_get_lead` masks them too, unless the owner granted the token `crm:read_pii`. `agent_get_conversation` masks the customer's contact and returns the message text as written. Both work only for a record in your own workspace.
 - **No credentials reachable.** Channel keys, provider secrets and other tokens have no tool and no path through this server.
 - **Every read is audited.** The log records the tool, the row counts and the record id. It does not store response bodies or personal data.
 - **Rate-limited.** 120 calls per minute per token. Lists are capped at 200 rows, and transcripts and attribution at 500. Every list returns `total`, the count before paging.

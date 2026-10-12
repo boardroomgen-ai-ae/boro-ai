@@ -5,7 +5,7 @@
 
 ## What it does
 
-Returns one lead **in full**: unmasked contact details, notes, events, stage history and open tasks. A lead id from another workspace reads as `not_found`.
+Returns one lead: notes, events, stage history and open tasks. Phone, e-mail and messenger ids are **masked** the same way as in the lists, unless the token also holds `crm:read_pii`, a separate permission the workspace owner grants. A lead id from another workspace reads as `not_found`.
 
 ## Inputs
 
@@ -18,6 +18,8 @@ The workspace is never an input. It always comes from the token.
 > Open the lead Layla Demo and summarise what happened so far and what is still open.
 
 ## Example output
+
+For a token that holds `crm:read_pii`. Without it, `pii` is `"masked"` and the contact fields are masked.
 
 ```json
 {
@@ -65,4 +67,4 @@ The workspace is never an input. It always comes from the token.
 
 ## Notes
 
-- This is the only CRM tool that returns full contact details. Every call is written to the audit log with the lead id.
+- This is the only CRM tool that can return full contact details, and only for a token with `crm:read_pii`. Every call is written to the audit log with the lead id.

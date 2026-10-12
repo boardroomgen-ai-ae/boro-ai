@@ -61,4 +61,4 @@ The workspace is never an input. It always comes from the token.
 
 ## Notes
 
-- Use `crm_get_lead` when you genuinely need one person's full contact details.
+- Use `crm_get_lead` when you genuinely need one person's full contact details. It returns them only for a token with `crm:read_pii`.
