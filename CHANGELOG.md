@@ -7,6 +7,10 @@ The hosted service is versioned separately. Public interfaces only change by **a
 
 ## [Unreleased]
 
+### Changed
+- One-click OAuth sign-in is documented: `https://control.boardroom-ai.ae/mcp/connect` for Claude custom connectors and ChatGPT developer-mode connectors (README, README_RU, ChatGPT and Claude Desktop guides, MCP overview).
+- Positioning: Boardroom AI is a global company headquartered in the UAE.
+
 ## [0.1.0]: 2026-10-09
 
 ### Added

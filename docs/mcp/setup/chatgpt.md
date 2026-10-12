@@ -2,9 +2,26 @@
 
 ## ChatGPT (chatgpt.com and the desktop app)
 
-ChatGPT supports remote MCP servers as **custom connectors** in developer mode, but they sign in with OAuth. This server uses owner-issued bearer tokens and doesn't offer an OAuth sign-in yet, so **a direct ChatGPT connector is not supported today**. It is on the [roadmap](../../../README.md#roadmap).
+ChatGPT supports remote MCP servers as **custom connectors** in developer mode, and they sign in with OAuth. This server supports OAuth sign-in, so you can connect ChatGPT directly, without copying a token.
 
-Until then, use the OpenAI API route below, or one of the Claude or Cursor guides.
+1. In ChatGPT, turn on developer mode and create a new connector (the exact menu names change between ChatGPT versions; look under **Settings → Connectors** or **Apps**).
+2. Use this URL for the MCP server:
+
+   ```
+   https://control.boardroom-ai.ae/mcp/connect
+   ```
+
+3. Choose **OAuth** as the authentication method, if ChatGPT asks.
+4. ChatGPT opens the Revenue Control sign-in page. Sign in as the **workspace owner** and approve the connection on the consent screen.
+5. In a new chat, enable the connector and ask: *"Call whoami, then list open leads without a follow-up task."*
+
+What happens behind the scenes:
+
+- ChatGPT registers itself through dynamic client registration and uses the authorization code flow with PKCE (S256). No client secret is involved.
+- Only the workspace owner can approve the connection. The token ChatGPT receives is read-only, appears in your token list under **Integrations → API and MCP → Boardroom MCP** and can be revoked there at any time. It expires after 30 days, after which ChatGPT asks you to sign in again.
+- `https://control.boardroom-ai.ae/mcp/connect` asks for sign-in on the first request, which is what starts the flow in ChatGPT. `https://control.boardroom-ai.ae/mcp` is the same server for clients that send an owner-issued token in a header.
+
+If you prefer not to use OAuth, use the OpenAI API route below, or one of the Claude or Cursor guides.
 
 ## OpenAI Responses API (remote MCP tool)
 

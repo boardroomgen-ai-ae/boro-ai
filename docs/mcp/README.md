@@ -6,7 +6,7 @@ Your Revenue Control workspace is available as a remote [Model Context Protocol]
 |---|---|
 | Endpoint | `https://control.boardroom-ai.ae/mcp` |
 | Transport | HTTP (JSON-RPC 2.0, MCP protocol `2024-11-05`) |
-| Auth | `Authorization: Bearer YOUR_MCP_TOKEN` |
+| Auth | `Authorization: Bearer YOUR_MCP_TOKEN`, or OAuth sign-in at `https://control.boardroom-ai.ae/mcp/connect` (PKCE, dynamic client registration) |
 | Access | Read-only, 13 tools |
 | Time zone | Asia/Dubai. Relative windows such as `today` and `week` are cut on Dubai day boundaries. |
 

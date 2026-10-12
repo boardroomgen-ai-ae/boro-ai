@@ -54,4 +54,10 @@ Try:
 
 ## Claude.ai custom connectors
 
-Claude.ai's web connector directory expects OAuth sign-in. This server uses owner-issued bearer tokens, so use Claude Desktop with the config above, or Claude Code.
+Claude custom connectors sign in with OAuth, and this server supports it. In Claude, open **Settings → Connectors → Add custom connector** and use this URL:
+
+```
+https://control.boardroom-ai.ae/mcp/connect
+```
+
+Claude opens the Revenue Control sign-in page. Sign in as the **workspace owner** and approve the connection on the consent screen. There is no token to copy. The token Claude receives is read-only, appears in your token list under **Integrations → API and MCP → Boardroom MCP** and can be revoked there.

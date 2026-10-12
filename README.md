@@ -2,7 +2,7 @@
 
 # Boro: your AI Business Operator
 
-**Revenue Control + Boro**: an AI sales agent, CRM, booking and revenue dashboard for small and mid-sized businesses in the UAE and CIS.
+**Revenue Control + Boro**: an AI sales agent, CRM, booking and revenue dashboard for businesses that sell through conversations. Built by Boardroom AI, a global company headquartered in the UAE.
 
 Boro does more than answer questions. It gets work done.
 
@@ -40,7 +40,17 @@ This repository is the **public developer layer**: documentation, connection gui
 
 ## Connect Claude, ChatGPT or Cursor to your workspace in 3 minutes
 
-Your workspace is also an **MCP server**. Any MCP client can read your leads, pipeline, AI-agent conversations, calls and marketing figures with a token you issue.
+Your workspace is also an **MCP server**. Any MCP client can read your leads, pipeline, AI-agent conversations, calls and marketing figures. Connect it in one of two ways.
+
+**One-click sign-in (OAuth).** In a client that supports OAuth for remote MCP servers, such as a Claude custom connector or a ChatGPT connector in developer mode, add this URL:
+
+```
+https://control.boardroom-ai.ae/mcp/connect
+```
+
+The client opens the Revenue Control sign-in page. The workspace owner signs in and approves the connection on a consent screen. There is no token to copy: the client receives a read-only token, which appears in your token list in the cabinet and can be revoked there.
+
+**Owner-issued token.** For Claude Code, Claude Desktop, Cursor, scripts and anything else that sends a header:
 
 1. Sign in to your workspace and open **Integrations → API and MCP → Boardroom MCP → Get an MCP token**. The token is shown once. Copy it.
 2. Add the server to your client:
@@ -59,7 +69,7 @@ Setup guides: [Claude Code](docs/mcp/setup/claude-code.md) · [Claude Desktop](d
 - **One workspace per token.** The workspace comes from the token. A tool argument can never point at another tenant.
 - **Masked by default.** Lists mask phone numbers and e-mails. Full contact details come back only when you ask for one specific record.
 - **Audited.** Every read is logged with the tool, the row counts and the record id. Response bodies and personal data are not stored in the log.
-- **Owner-issued and revocable.** Only the workspace owner can mint a token. Tokens expire, and you can revoke one at any time from the same card.
+- **Owner-issued and revocable.** Only the workspace owner can mint a token or approve an OAuth sign-in. Tokens expire, and you can revoke one at any time from the same card.
 
 ## What you can ask
 
@@ -115,6 +125,7 @@ Some channels depend on approval by the channel provider for your business. The 
 
 - Every token and API key belongs to exactly one workspace. Requests never choose their tenant.
 - Credentials are stored as hashes. The plaintext is shown once, at creation.
+- OAuth sign-in uses the authorization code flow with PKCE (S256) and dynamic client registration. Only the workspace owner can approve it.
 - MCP is read-only. Actions in the cabinet go through an explicit confirmation step.
 - Every MCP read is written to the workspace audit log.
 - Rate limits apply to every token and every key.
@@ -126,13 +137,15 @@ Found a vulnerability? See [SECURITY.md](SECURITY.md). Please don't open a publi
 | | Item | Status |
 |---|---|---|
 | ✅ | MCP server, 13 read tools, owner-issued tokens | Available now |
+| ✅ | One-click OAuth sign-in for Claude and ChatGPT connectors | Available now |
+| ✅ | Listings in the official MCP Registry, Smithery and Glama | Available now |
 | ✅ | REST API v1: leads, deals, tasks, create lead | Available now |
 | ✅ | Website chat widget | Available now |
 | 🧪 | Boro actions in the cabinet (book, move stage, create task) with confirmation | Beta |
 | 🧪 | Boro inbox digest and reply drafts | Beta |
 | 🔜 | MCP write tools with preview-then-confirm | Coming soon |
 | 🔜 | MCP demo sandbox with a fictional CRM, no sign-up needed | Coming soon |
-| 🔜 | Listings in the official MCP Registry and client catalogs | Coming soon |
+| 🔜 | Listings in more client catalogs | Coming soon |
 | 💭 | Boro Skills: vertical packs for clinics, salons, real estate | Exploring |
 
 Want something on this list sooner? [Open a feature request](../../issues/new?template=feature_request.yml) or [ask for an integration](../../issues/new?template=integration_request.yml).
@@ -153,6 +166,6 @@ Documentation and examples in this repository are licensed under [Apache 2.0](LI
 
 <div align="center">
 
-**Built in Dubai** 🇦🇪 by Boardroom AI · [control.boardroom-ai.ae](https://control.boardroom-ai.ae/?utm_source=github&utm_medium=readme&utm_campaign=footer)
+**Boardroom AI**, a global company headquartered in the UAE 🇦🇪 · [control.boardroom-ai.ae](https://control.boardroom-ai.ae/?utm_source=github&utm_medium=readme&utm_campaign=footer)
 
 </div>
